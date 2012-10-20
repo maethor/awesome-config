@@ -1,7 +1,3 @@
----------------
--- LIBRARIES --
----------------
-
 awful = require("awful")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
@@ -43,23 +39,13 @@ function loadrc(name, mod)
 end
 
 loadrc("errors")		-- errors and debug stuff
-
-config = {}
-
-loadrc("env")
-loadrc("debug")
-loadrc("start")
-
--- Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-    end
-end
-
-loadrc("topbar")
-loadrc("tags")
-loadrc("bindings")
-loadrc("rules")
-loadrc("signals")
+loadrc("env")           -- global config & variables
+loadrc("debug")         -- debugging primitive dbg()
+loadrc("start")         -- programs to run on start
+loadrc("wallpaper")     -- wallpaper settings
+loadrc("topbar")        -- topbar configuration
+loadrc("tags")          -- tags handling
+loadrc("bindings")      -- key bindings
+loadrc("rules")         -- window rules
+loadrc("signals")       -- window manager behaviour
 
