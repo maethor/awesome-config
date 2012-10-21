@@ -27,17 +27,20 @@ function battery:create()
     instance.notification_title = "Battery"  -- Notification's title
     instance.notification_timeout = 5        -- Notification's timeout in seconds
 
-    instance.warning_message      = "Battery level is under "
-    instance.critical_message     = "WARNING : Battery level is now under "
-    instance.plugged_message      = "AC is plugged. Battery is charging."
-    instance.fullycharged_message = "Battery is fully charged !"
-    instance.unplugged_message    = "AC adapter is unplugged."
-    instance.nobattery_message    = "No battery found."
+    instance.warning_message         = "Battery level is under "
+    instance.critical_message        = "WARNING : Battery level is now under "
+    instance.really_critical_message = "CRITICAL : Are you crazy ? Plug on the AC right now !\nBattery under "
+    instance.plugged_message         = "AC is plugged. Battery is charging."
+    instance.fullycharged_message    = "Battery is fully charged !"
+    instance.unplugged_message       = "AC adapter is unplugged."
+    instance.nobattery_message       = "No battery found."
 
     instance.warning_level  = 15  -- Battery warning level, in percent
     instance.critical_level = 5   -- Battery critical level, in percent
+    instance.really_critical_level = 0   -- Battery really critical level, in percent
     instance.warning_notification_timeout  = 5  -- Timeout of warning notification, in seconds
     instance.critical_notification_timeout = 5  -- Timeout of critical notification, in seconds
+    instance.really_critical_notification_timeout = 60  -- Timeout of really critical notification, in seconds
 
     instance.warning_color      = "#edd400"
     instance.critical_color     = "#ef2929"
@@ -107,6 +110,14 @@ function battery:run()
             if self.level < 3 then
                 self:add_popup(self.critical_message..tostring(self.critical_level).."% !", self.critical_notification_timeout, self.path_to_icons .. "/urgent.png")
                 self.level = 3
+            end
+            cap = "<span color='"..self.critical_color.."'>"..cap.."</span>"
+        end
+        --Battery < really_critical_level
+        if args[2] <= self.really_critical_level then
+            if self.level < 4 then
+                self:add_popup(self.really_critical_message..tostring(self.really_critical_level).."% !", self.really_critical_notification_timeout, self.path_to_icons .. "/urgent.png")
+                self.level = 4
             end
             cap = "<span color='"..self.critical_color.."'>"..cap.."</span>"
         end
