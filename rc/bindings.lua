@@ -1,4 +1,5 @@
 local keydoc = loadrc("keydoc", "vbe/keydoc")
+local volume = loadrc("volume", "maethor/volume")
 
 --------------------
 -- Mouse bindings --
@@ -76,13 +77,9 @@ globalkeys = awful.util.table.join(
 -- Sound
 --------
 
-    --awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 2dB+") end),
-    --awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 2dB-") end),
-    --awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toogle") end),
-    awful.key({ }, "XF86AudioRaiseVolume", function () volume.setvolume("up") end),
-    awful.key({ }, "XF86AudioLowerVolume", function () volume.setvolume("down") end),
-    awful.key({ }, "XF86AudioMute", function () volume.setvolume("mute") end),
-    awful.key({ modkey2, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () volume.increase() end),
+    awful.key({ }, "XF86AudioLowerVolume", function () volume.decrease() end),
+    awful.key({ }, "XF86AudioMute", function () volume.toggle() end),
    
 -- Prompts
 ----------
@@ -181,22 +178,23 @@ globalkeys = awful.util.table.join(
 ---------------------
 
     -- Take a screenshot
-    awful.key({ modkey,             }, "Print", func.misc.screenshot),
+    awful.key({ modkey,             }, "Print", func.misc.screenshot, "Screenshot"),
     -- Open system monitoring
-    awful.key({                     }, "#156", function () awful.util.spawn(apps.sys)end),
+    awful.key({                     }, "#156", function () awful.util.spawn(apps.sys)end, "Open monitoring"),
 
     -- Mpd functions
-    awful.key({ modkey,             }, "p", func.mpd.play_pause),
-    awful.key({ modkey, "Shift"     }, "p", func.mpd.notify),
-    awful.key({ modkey, "Control"   }, "p", func.mpd.vol_high_low),
-    awful.key({ modkey,             }, "<", func.mpd.prev),
-    awful.key({ modkey, "Shift"     }, "<", func.mpd.next),
+    awful.key({ modkey,             }, "p", func.mpd.play_pause, "MPC pause"),
+    awful.key({ modkey, "Shift"     }, "p", func.mpd.notify, "MPC notify"),
+    awful.key({ modkey, "Control"   }, "p", func.mpd.vol_high_low, "MPC toogle volume"),
+    awful.key({ modkey,             }, "<", func.mpd.prev, "MPC previous track"),
+    awful.key({ modkey, "Shift"     }, "<", func.mpd.next, "MPC next track"),
 
     -- Keydoc
-    awful.key({ modkey, "Shift"     }, "F1", keydoc.display),
+    awful.key({ modkey, "Shift"     }, "F1", keydoc.display, "Display this help"),
 
     -- Lock screen
-    awful.key({                     }, "#252", func.misc.lock)
+    awful.key({                     }, "#252", func.misc.lock, "Lock screen"),
+    awful.key({ modkey2, "Control"  }, "l", func.misc.lock, "Lock screen")
 )
 
 -- Manage tags with Mod4+[1-9]

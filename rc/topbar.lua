@@ -108,9 +108,9 @@ for s = 1, screen.count() do
 
     -- Volume Widget
     myvolume = wibox.widget.textbox()
-    --require("volume")
-    --wicked.register(myvolume, function() return volume.setvolume("update") end, "$1", 13)
-    vicious.register(myvolume, vicious.widgets.volume, " $2 $1%", 5, "Master")
+    local volume = loadrc("volume", "maethor/volume")
+    vicious.register(myvolume, function() return volume.getvolume() end, "$1", 5)
+    --vicious.register(myvolume, vicious.widgets.volume, " $2 $1%", 5, "Master")
      
 -- Icons
 --------

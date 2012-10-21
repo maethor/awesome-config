@@ -130,3 +130,4 @@ function battery:add_popup(popup_text, popup_timeout, popup_image)
 end
 
 module("maethor/batterywidget")
+
