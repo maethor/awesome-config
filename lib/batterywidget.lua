@@ -98,7 +98,7 @@ function battery:run()
 
         local cap = args[2].."% - "..args[3]
         -- Battery < warning_level
-        if args[2] <= self.warning_level then
+        if args[2] <= self.warning_level and args[2] > self.critical_level then
             if self.level < 2 then
                 self:add_popup(self.warning_message..tostring(self.warning_level).."%.", self.warning_notification_timeout, self.path_to_icons .. "/warning.png")
                 self.level = 2
@@ -107,7 +107,7 @@ function battery:run()
         end
         
         --Battery < critical_level
-        if args[2] <= self.critical_level then
+        if args[2] <= self.critical_level and args[2] > self.really_critical_level then
             if self.level < 3 then
                 self:add_popup(self.critical_message..tostring(self.critical_level).."% !", self.critical_notification_timeout, self.path_to_icons .. "/urgent.png")
                 self.level = 3
@@ -120,7 +120,7 @@ function battery:run()
                 self:add_popup(self.really_critical_message..tostring(self.really_critical_level).."% !", self.really_critical_notification_timeout, self.path_to_icons .. "/urgent.png")
                 self.level = 4
             end
-            cap = "<span color='"..self.critical_color.."'>"..cap.."</span>"
+            cap = "<span color='"..self.really_critical_color.."'>"..cap.."</span>"
         end
 
         return self.prefix.." "..cap

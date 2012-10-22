@@ -14,8 +14,8 @@ theme.icons = theme.path .. "/icons"
 -- Colors
 theme.fg_normal   = "#eeeeec"
 theme.fg_focus    = "#73d216"
-theme.fg_important= "#f57900"
-theme.fg_urgent   = "#ef2929"
+theme.fg_urgent   = "#f57900"
+theme.fg_important= "#ef2929"
 theme.fg_minimize = "#f57900"
 theme.bg_normal   = "#2e3436"
 theme.bg_focus    = theme.bg_normal
