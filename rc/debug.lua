@@ -1,8 +1,8 @@
 local colors = {
-  header = theme.fg_widget_clock,
-  count  = theme.fg_widget_label,
-  index  = theme.fg_widget_label,
-  name   = theme.fg_widget_value_important,
+  header = theme.fg_normal,
+  count  = theme.fg_normal,
+  index  = theme.fg_normal,
+  name   = theme.fg_urgent,
 }
 
 local function client_info()
@@ -29,8 +29,8 @@ local function client_info()
     for i = 1, #inf do
         v = v .. string.format('%2s: <span color="%s">%-20s</span> = <span color="%s">%s</span>\n',
 			       i,
-			       beautiful.fg_widget_label, inf[i],
-			       beautiful.fg_widget_value, tostring(c[inf[i]]))
+			       beautiful.fg_normal, inf[i],
+			       beautiful.fg_normal, tostring(c[inf[i]]))
     end
 
     naughty.notify{ text = string.format('<span font="Terminus 8">%s</span>', v:sub(1,#v-1)),
@@ -99,6 +99,6 @@ function dbg(...)
 
    -- Display only if we don't have only clients to be displayed
    if clients ~= num then
-      naughty.notify{ text = text, timeout = 0, hover_timeout = 2, screen = screen.count() }
+      naughty.notify{ text = text, timeout = 0 }
    end
 end

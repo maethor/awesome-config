@@ -42,10 +42,11 @@ function battery:create()
     instance.critical_notification_timeout = 5  -- Timeout of critical notification, in seconds
     instance.really_critical_notification_timeout = 60  -- Timeout of really critical notification, in seconds
 
-    instance.warning_color      = "#edd400"
-    instance.critical_color     = "#ef2929"
-    instance.fullycharged_color = "#8ae234"
-    instance.plugged_color      = "#fce94f"
+    instance.warning_color         = "#edd400"
+    instance.critical_color        = "#f57900"
+    instance.really_critical_color = "#ef2929"
+    instance.fullycharged_color    = "#8ae234"
+    instance.plugged_color         = "#fce94f"
 
     instance.prefix = '<b>ϟ</b>'
 

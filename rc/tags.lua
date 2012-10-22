@@ -13,9 +13,9 @@ end
 
 shifty.config.tags = {
     ["main"]  = { position = 1, spawn = apps.term_tabbed, init = true, icon = tagicon("main") },
-    ["ssh"]   = { position = 2, spawn = apps.term .. " -name ssh -e zsh -c 'ssh subiron.org'" },
+    ["ssh"]   = { position = 2, spawn = apps.term .. " -name ssh -T ssh -e zsh -c 'ssh subiron.org'" },
     ["www"]   = { position = 3, spawn = apps.browser, nopopup = true, max_clients = 1, icon = tagicon("web") },
-    ["xanadu"]= { position = 4, spawn = apps.term .. " -name xanadu -e ssh aquilenet.fr" },
+    ["xanadu"]= { position = 4, spawn = apps.term .. " -name xanadu -T xanadu -e ssh aquilenet.fr" },
     ["music"] = { position = 5, spawn = apps.music, exclusive = true },
     ["test"]  = { position = 6, spawn = apps.term .. " -T Xephyr -e Xephyr -ac -br -noreset -screen 600x400 :1"},
     ["dl"]    = { position = 7, spawn = apps.torrents},
@@ -40,6 +40,7 @@ shifty.config.apps = {
     { match = {"^Shared links on"                          }, float = true, intrusive = true },
     { match = {"KTorrent"                                  }, tag = "dl" },
     { match = {"vlc", "MPlayer", "ffplay"                  }, tag = "media" },
+    { match = {"mpc"                                       }, tag = "music" },
     { match = {"xanadu"                                    }, tag = "xanadu" },
     { match = {"wpa_gui"                                   }, tag = "net" },
     { match = {"WeeChat 0.2.6","weechat-curses","weechat"  }, tag = "irc" },
@@ -47,7 +48,7 @@ shifty.config.apps = {
     { match = {"mutt", "Mutt"                              }, tag = "mail" },
     { match = {"Psi", "psi"                                }, tag = "im" },
     { match = {"htop", "powertop"                          }, tag = "sys" },
-    { match = {"Xephyr"                                    }, tag = "test", },
+    { match = {"Xephyr"                                    }, tag = "test" },
     { match = {"gpicview","Epdfview", "okular", "gwenview", "evince" }, tag = "view", float = true },
     { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
     { match = { "" }, 

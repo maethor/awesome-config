@@ -53,11 +53,11 @@ apps = {
     term_tabbed = terminal .. " -pe tabbed",
     term_screen = terminal .. " -e screen",
     filemanager = terminal .. " -e ranger",
-    music = terminal .. " -name ncmpcpp -e ncmpcpp",
-    irc = terminal .. " -name weechat -e weechat-curses",
-    mail = terminal .. " -name mutt -e mutt",
+    music = terminal .. " -name ncmpcpp -T ncmpcpp -e ncmpcpp",
+    irc = terminal .. " -name weechat -T weechat -e weechat-curses",
+    mail = terminal .. " -name mutt -T mutt -e mutt",
     im = "psi-plus",
-    sys = terminal .. " -name htop -e htop",
+    sys = terminal .. " -name htop -T htop -e htop",
     browser = "chromium",
     torrents = "ktorrent",
     wifi = "/usr/sbin/wpa_gui"
@@ -66,44 +66,6 @@ apps = {
 -- Useful functions
 settings = {}
 func = {
-    -- mpd functions, require mpc
-    mpd = {
-        -- Toggle mpd volume between low and normal
-        vol_high_low = function ()
-            if settings._mpd_volume == nil then
-                setting._mpd_volume = 30
-            end
-            if settings._mpd_volume == 30 then
-                awful.util.spawn_with_shell("mpc volume 74")
-                settings._mpd_volume = 74
-            else
-                awful.util.spawn_with_shell("mpc volume 30")
-                settings._mpd_volume = 30
-            end
-        end,
-
-        -- Next song
-        next = function ()
-            awful.util.spawn("mpc next")
-        end,
-
-        -- Previous song
-        prev = function ()
-            awful.util.spawn("mpc prev")
-        end,
-
-        -- Play/pause 
-        play_pause = function ()
-            awful.util.spawn("mpc toggle")
-        end,
-
-        -- Notify status
-        notify = function ()
-            local info = awful.util.pread(awesome_bins .. "/mpc_show")
-            naughty.notify {title="Now playing:", text=info, timout=5, screen=mouse.screen}
-        end,
-    },
-
     -- Ssh 
     ssh = {
         -- Auto completion for ssh prompt

@@ -22,7 +22,7 @@ function getvolume()
     if string.find(status, "on", 1, true) then
         volume = volume .. "%"
     else
-        volume = "M"
+        volume = "M (".. volume .. "%)"
     end
     return volume
 end
@@ -34,12 +34,12 @@ end
 function increase()
     change ("5%+")
 end
+
 function decrease()
-   change("5%-")
+    change("5%-")
 end
 
 function toggle()
    change("toggle")
 end
-
 

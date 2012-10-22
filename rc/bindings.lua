@@ -1,5 +1,6 @@
 local keydoc = loadrc("keydoc", "vbe/keydoc")
 local volume = loadrc("volume", "maethor/volume")
+local mpc = loadrc("mpc", "maethor/mpc")
 
 --------------------
 -- Mouse bindings --
@@ -16,7 +17,11 @@ root.buttons(awful.util.table.join(
 ------------------
 
 globalkeys = awful.util.table.join(
-    keydoc.group("Focus"),
+
+-- Clients
+----------
+
+    keydoc.group("Client manipulation"),
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -80,7 +85,38 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function () volume.increase() end),
     awful.key({ }, "XF86AudioLowerVolume", function () volume.decrease() end),
     awful.key({ }, "XF86AudioMute", function () volume.toggle() end),
-   
+
+-- Useful keybindings
+---------------------
+
+    -- Take a screenshot
+    awful.key({ modkey,             }, "Print", func.misc.screenshot, "Screenshot"),
+    -- Open system monitoring
+    awful.key({                     }, "#156", function () awful.util.spawn(apps.sys)end, "Open monitoring"),
+
+    -- Mpd functions
+    awful.key({ modkey,             }, "p", function () mpc.play_pause() end, "MPC pause"),
+    awful.key({ modkey, "Shift"     }, "p", function () mpc.notify() end, "MPC notify"),
+    --awful.key({ modkey, "Control"   }, "p", vol_high_low(), "MPC toogle volume"),
+    awful.key({ modkey,             }, "<", function () mpc.prev_track() end, "MPC previous track"),
+    awful.key({ modkey, "Shift"     }, "<", function () mpc.next_track() end, "MPC next track"),
+
+    -- Lock screen
+    awful.key({ modkey2, "Control"  }, "l", func.misc.lock, "Lock screen"),
+
+-- Help
+-------
+
+    -- Keydoc
+    keydoc.group("Help"),
+    awful.key({ modkey, "Shift" }, "F1", function() keydoc.display("Help") end, "Display this help"),
+    awful.key({ modkey, "Shift" }, "F2", function() keydoc.display("Misc") end, "Misc commands"),
+    awful.key({ modkey, "Shift" }, "F3", function() keydoc.display("Tag manipulation") end, "Tags commands"),
+    awful.key({ modkey, "Shift" }, "F4", function() keydoc.display("Client manipulation") end, "Clients commands"),
+    awful.key({ modkey, "Shift" }, "F5", function() keydoc.display("Layout manipulation") end, "Layout commands"),
+    awful.key({ modkey, "Shift" }, "F6", function() keydoc.display("Prompts") end, "Prompts commands"),
+    awful.key({ modkey, "Shift" }, "F12", keydoc.display, "Display complete help"),
+
 -- Prompts
 ----------
 
@@ -172,29 +208,8 @@ globalkeys = awful.util.table.join(
                 awful.util.spawn(apps.browser .. " " .. url, false)
                 if tags[mouse.screen][3] then awful.tag.viewonly(tags[mouse.screen][3]) end
             end)
-    end, "Browse"),
+    end, "Browse")
 
--- Useful keybindings
----------------------
-
-    -- Take a screenshot
-    awful.key({ modkey,             }, "Print", func.misc.screenshot, "Screenshot"),
-    -- Open system monitoring
-    awful.key({                     }, "#156", function () awful.util.spawn(apps.sys)end, "Open monitoring"),
-
-    -- Mpd functions
-    awful.key({ modkey,             }, "p", func.mpd.play_pause, "MPC pause"),
-    awful.key({ modkey, "Shift"     }, "p", func.mpd.notify, "MPC notify"),
-    awful.key({ modkey, "Control"   }, "p", func.mpd.vol_high_low, "MPC toogle volume"),
-    awful.key({ modkey,             }, "<", func.mpd.prev, "MPC previous track"),
-    awful.key({ modkey, "Shift"     }, "<", func.mpd.next, "MPC next track"),
-
-    -- Keydoc
-    awful.key({ modkey, "Shift"     }, "F1", keydoc.display, "Display this help"),
-
-    -- Lock screen
-    awful.key({                     }, "#252", func.misc.lock, "Lock screen"),
-    awful.key({ modkey2, "Control"  }, "l", func.misc.lock, "Lock screen")
 )
 
 -- Manage tags with Mod4+[1-9]
@@ -224,7 +239,7 @@ end
 --------------
 
 clientkeys = awful.util.table.join(
-    keydoc.group("Window-specific bindings"),
+    keydoc.group("Client manipulation"),
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end, "Fullscreen"),
     awful.key({ modkey,           }, "c",      function (c) c:kill()                         end, "Close"),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle, "Toggle floating"),
@@ -233,8 +248,6 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "i",      dbg, "Get client-related information"),
     awful.key({ modkey,           }, "n",
         function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end, "Minimize"),
     awful.key({ modkey,           }, "m",

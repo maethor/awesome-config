@@ -46,6 +46,8 @@ local function key2str(key)
    local translate = {
       ["#14"] = "#",
       [" "] = "Space",
+      ["<"] = "&lt;",
+      [">"] = "&gt;",
    }
    sym = translate[sym] or sym
    if not key.modifiers or #key.modifiers == 0 then return sym end
@@ -95,8 +97,7 @@ local function markup(keys)
         '<span font="DejaVu Sans Mono 10" color="' .. beautiful.border_focus .. '"> ' ..
 	    string.format("%" .. (longest - unilen(skey)) .. "s  ", "") .. skey ..
         '</span>  <span color="' .. beautiful.fg_normal .. '">' ..
-        help 
-        .. '</span>\n'
+        help .. '</span>\n'
       end
    end
 
@@ -105,23 +106,25 @@ end
 
 -- Display help in a naughty notification
 local nid = nil
-function display()
+function display(what)
    local strings = awful.util.table.join(
       markup(capi.root.keys()),
       capi.client.focus and markup(capi.client.focus:keys()) or {})
 
    local result = ""
    for group, res in pairs(strings) do
-      if #result > 0 then result = result .. "\n" end
-      result = result ..
-     '<span weight="bold" color="#E80F28">' ..
-	 group .. 
-     "</span>\n" .. 
-     res
+      if what == nil or group == what then 
+         if #result > 0 then result = result .. "\n" end
+         result = result ..
+         '<span weight="bold" color="#E80F28">' ..
+	     group .. 
+         "</span>\n" .. 
+         res
+      end
    end
 --   nid = naughty.notify({ text = result,
 --			  replaces_id = nid,
 --			  hover_timeout = 0.1,
 --			  timeout = 30 }).id
-   naughty.notify {title="Help", text=result, timeout=30}
+   nid = naughty.notify({title="Help", replaces_id=nid, text=result, timeout=30}).id
 end
