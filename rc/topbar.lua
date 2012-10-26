@@ -81,15 +81,16 @@ for s = 1, screen.count() do
     -- Date & Calendar Widget
     myclock = wibox.widget.textbox()
     vicious.register(myclock, vicious.widgets.date, "%a %d/%m, %R", 60)
-    loadrc("orglendar")
-    orglendar.files = { "/home/maethor/.orglendar/birthdays.org" }
-    orglendar.register(myclock)
-    --myclock:connect_signal("mouse::enter", function() orglendar:add_calendar(0) end)
-    --myclock:connect_signal("mouse::leave", remove_calendar)
-    --myclock:buttons(awful.util.table.join( awful.button({ }, 4, function() add_calendar(-1) end),
-    --                                       awful.button({ }, 5, function() add_calendar(1) end),
-    --                                       awful.button({ }, 1, function() add_calendar(-1) end),
-    --                                       awful.button({ }, 3, function() add_calendar(1) end)))
+    --loadrc("orglendar")
+    --orglendar.files = { "/home/maethor/.orglendar/birthdays.org" }
+    --orglendar.register(myclock)
+    local calendar = loadrc("calendar", "maethor/calendar")
+    myclock:connect_signal("mouse::enter", function() calendar.add_calendar(0) end)
+    myclock:connect_signal("mouse::leave", calendar.remove_calendar)
+    myclock:buttons(awful.util.table.join( awful.button({ }, 4, function() calendar.add_calendar(-1) end),
+                                           awful.button({ }, 5, function() calendar.add_calendar(1) end),
+                                           awful.button({ }, 1, function() calendar.add_calendar(-1) end),
+                                           awful.button({ }, 3, function() calendar.add_calendar(1) end)))
     
     -- Battery Widget
     loadrc("batterywidget", "maethor/batterywidget")
