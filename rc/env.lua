@@ -59,7 +59,7 @@ apps = {
     im = "psi-plus",
     sys = terminal .. " -name htop -T htop -e htop",
     browser = "chromium",
-    torrents = "ktorrent",
+    torrents = "transmission-qt",
     wifi = "/usr/sbin/wpa_gui"
 }
 
