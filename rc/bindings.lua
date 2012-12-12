@@ -104,6 +104,9 @@ globalkeys = awful.util.table.join(
     -- Lock screen
     awful.key({ modkey2, "Control"  }, "l", func.misc.lock, "Lock screen"),
 
+    -- Display
+    awful.key({                     }, "XF86Display", xrandr, "Change Display"),
+
 -- Help
 -------
 

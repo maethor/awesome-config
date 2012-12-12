@@ -29,7 +29,7 @@ local type   = type
 local pairs  = pairs
 local awful  = require("awful")
 
-module("vbe/icons")
+module("maethor/icons")
 
 -- Lookup for an icon. Return full path.
 function lookup(arg)
