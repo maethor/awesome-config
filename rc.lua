@@ -5,7 +5,7 @@ beautiful = require("beautiful")
 naughty = require("naughty")
 gears = require("gears")
 
--- Simple function to load additional LUA files from rc/.
+-- {{{ Simple function to load additional LUA files from rc/.
 function loadrc(name, mod)
    local success
    local result
@@ -37,6 +37,7 @@ function loadrc(name, mod)
 
    return result
 end
+-- }}}
 
 loadrc("errors")		-- errors and debug stuff
 loadrc("env")           -- global config & variables

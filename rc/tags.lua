@@ -7,9 +7,8 @@ local tagicon = function(icon)
    return nil
 end
 
---------------
--- Tag list --
---------------
+-- {{{1 Tag list
+----------------
 
 shifty.config.tags = {
     ["main"]  = { position = 1, spawn = apps.term_tabbed, init = true, icon = tagicon("main") },
@@ -30,9 +29,8 @@ shifty.config.tags = {
     ["foo"]   = { position = 16, nopopop = true, init = true, },
 }
 
--------------------
--- Clients rules --
--------------------
+-- {{{1 Clients rules
+---------------------
 
 shifty.config.apps = {
     { match = {"ssh"                                       }, tag = "ssh" },
@@ -59,9 +57,8 @@ shifty.config.apps = {
     }
 }
 
----------------------
--- Default options --
----------------------
+-- {{{1 Default options
+-----------------------
 
 shifty.config.defaults = {
     layout = awful.layout.suit.tile,
@@ -70,9 +67,8 @@ shifty.config.defaults = {
     floatBars = false,
 }
 
------------------
--- Init shifty --
------------------
+-- {{{1 Init shifty
+-------------------
 
 shifty.config.taglist = mytaglist
 shifty.init()

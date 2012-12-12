@@ -5,7 +5,7 @@
 wibox = require("wibox")
 vicious = require("vicious")
 
--- Initialization :
+-- {{{1 Initialization :
 -- Create a wibox for each screen and add it
 --------------------------------------------
 
@@ -69,8 +69,8 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
 
--- Widgets
---------------
+-- {{{1 Widgets
+---------------
 
     -- Taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
@@ -113,8 +113,8 @@ for s = 1, screen.count() do
     vicious.register(myvolume, function() return volume.getvolume() end, "$1", 5)
     --vicious.register(myvolume, vicious.widgets.volume, " $2 $1%", 5, "Master")
      
--- Icons
---------
+-- {{{1 Icons
+-------------
 
     myspacer          = wibox.widget.textbox()
     wibox.widget.textbox.set_text(myspacer, " ")
@@ -140,8 +140,8 @@ for s = 1, screen.count() do
     cpuicon = wibox.widget.imagebox()
     wibox.widget.imagebox.set_image(cpuicon, beautiful.icons .. "/widgets/cpu.png")
 
--- Launcher
------------
+-- {{{1 Launcher
+----------------
 
     --mylauncher = wibox.widget.imagebox()
     --wibox.widget.imagebox.set_image(mylauncher, beautiful.awesome_icon)
@@ -162,8 +162,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 
 
--- Create the wibox
--------------------
+-- {{{1 Create the wibox
+------------------------
 
     mywibox[s] = awful.wibox({ position = "top", screen = s })
     

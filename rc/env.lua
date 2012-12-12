@@ -5,22 +5,22 @@ local io = io
 local os = os
 local table = table
 
--- Directories
+-- {{{1 Directories
 awesome_config = awful.util.getdir("config")
 awesome_bins = awesome_config .. "/bin"
 
--- Terminal and Editor 
+-- {{{1 Terminal and Editor 
 terminal = "urxvtc"
 terminal_full = "/usr/bin/urxvtc"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal_full .. " -e " .. editor
 
--- Modkeys 
+-- {{{1 Modkeys 
 -- Usually, Mod4 is the 'windows' key, between ctrl and alt
 modkey = "Mod4"
 modkey2 = "Mod1"
 
--- Table of layouts, order matters.
+-- {{{1 Table of layouts, order matters.
 layouts =
 {
     awful.layout.suit.tile,
@@ -37,16 +37,16 @@ layouts =
     awful.layout.suit.floating
 }
 
--- Beautiful init
+-- {{{1 Beautiful init
 beautiful.init(awesome_config .. "/themes/maethor/theme.lua")
 
--- Naughty theming
+-- {{{1 Naughty theming
 naughty.config.defaults.font = beautiful.notify_font
 naughty.config.defaults.fg = beautiful.notify_fg
 naughty.config.defaults.bg = beautiful.notify_bg
 naughty.config.defaults.border_color = beautiful.notify_border
 
--- Applications
+-- {{{1 Applications
 apps = {
     term = terminal,
     term_full = terminal_full,
@@ -63,7 +63,7 @@ apps = {
     wifi = "/usr/sbin/wpa_gui"
 }
 
--- Useful functions
+-- {{{1 Useful functions
 settings = {}
 func = {
     -- Ssh 

@@ -17,9 +17,7 @@ root.buttons(awful.util.table.join(
 ------------------
 
 globalkeys = awful.util.table.join(
-
--- Clients
-----------
+-- {{{1 Clients
 
     keydoc.group("Client manipulation"),
     awful.key({ modkey,           }, "j",
@@ -35,8 +33,7 @@ globalkeys = awful.util.table.join(
         end,
         "Focus previous window"),
 
--- Tag manipulation : Shifty
-----------------------------
+-- {{{1 Tag manipulation : Shifty
 
     keydoc.group("Tag manipulation"),
     awful.key({ modkey,             }, "Left",   awful.tag.viewprev, "View previous tag"),
@@ -50,8 +47,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control"   }, "Left", shifty.shift_prev, "Move tag to the left"),  -- Swap tag position with the previous one
     awful.key({ modkey, "Control"   }, "Right", shifty.shift_next, "Move tag to the right"), -- Swap tag position with the next one
 
--- Layout manipulation : Awful
-------------------------------
+-- {{{1 Layout manipulation : Awful
 
     keydoc.group("Layout manipulation"),
     awful.key({ modkey, "Shift"     }, "j", function () awful.client.swap.byidx(  1)    end, "Swap with next window"),
@@ -69,8 +65,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control"   }, "n", awful.client.restore),
     awful.key({ modkey,             }, "u", awful.client.urgent.jumpto),
 
--- Standard program
--------------------
+-- {{{1 Standard program
 
     keydoc.group("Misc"),
     awful.key({ modkey,             }, "Return", function () awful.util.spawn(apps.term) end, "Spawn a terminal"),
@@ -79,15 +74,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control"   }, "r", awesome.restart, "Restart awesome"),
     awful.key({ modkey, "Shift"     }, "q", awesome.quit, "Quit awesome"),
 
--- Sound
---------
+-- {{{1 Sound
 
     awful.key({ }, "XF86AudioRaiseVolume", function () volume.increase() end),
     awful.key({ }, "XF86AudioLowerVolume", function () volume.decrease() end),
     awful.key({ }, "XF86AudioMute", function () volume.toggle() end),
 
--- Useful keybindings
----------------------
+-- {{{1 Useful keybindings
 
     -- Take a screenshot
     awful.key({ modkey,             }, "Print", func.misc.screenshot, "Screenshot"),
@@ -107,8 +100,7 @@ globalkeys = awful.util.table.join(
     -- Display
     awful.key({                     }, "XF86Display", xrandr, "Change Display"),
 
--- Help
--------
+-- {{{1 Help
 
     -- Keydoc
     keydoc.group("Help"),
@@ -120,8 +112,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift" }, "F6", function() keydoc.display("Prompts") end, "Prompts commands"),
     awful.key({ modkey, "Shift" }, "F12", keydoc.display, "Display complete help"),
 
--- Prompts
-----------
+-- {{{1 Prompts
 
     keydoc.group("Prompts"),
     awful.key({ modkey,             }, "BackSpace",
@@ -212,11 +203,10 @@ globalkeys = awful.util.table.join(
                 if tags[mouse.screen][3] then awful.tag.viewonly(tags[mouse.screen][3]) end
             end)
     end, "Browse")
-
+-- }}}
 )
 
--- Manage tags with Mod4+[1-9]
-------------------------------
+-- {{{1 Manage tags with Mod4+[1-9]
 
 for i=10,19 do
     globalkeys = awful.util.table.join(globalkeys, awful.key({ modkey }, "#" ..i,
@@ -238,8 +228,7 @@ for i=10,19 do
     end))
 end
 
--- Client keys
---------------
+-- {{{1 Client keys
 
 clientkeys = awful.util.table.join(
     keydoc.group("Client manipulation"),
@@ -259,6 +248,7 @@ clientkeys = awful.util.table.join(
             c.maximized_vertical   = not c.maximized_vertical
         end, "Maximise")
 )
+-- }}}
 
 keydoc.group("Misc")
 
