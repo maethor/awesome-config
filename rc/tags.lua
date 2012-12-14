@@ -11,9 +11,9 @@ end
 ----------------
 
 shifty.config.tags = {
-    ["main"]  = { position = 1, spawn = apps.term_tabbed, init = true, icon = tagicon("main") },
+    ["main"]  = { position = 1, spawn = apps.term_tabbed, init = true },
     ["ssh"]   = { position = 2, spawn = apps.term .. " -name ssh -T ssh -e zsh -c 'ssh subiron.org'" },
-    ["www"]   = { position = 3, spawn = apps.browser, nopopup = true, max_clients = 1, icon = tagicon("web") },
+    ["www"]   = { position = 3, spawn = apps.browser, nopopup = true, max_clients = 1 },
     ["xanadu"]= { position = 4, spawn = apps.term .. " -name xanadu -T xanadu -e ssh aquilenet.fr" },
     ["music"] = { position = 5, spawn = apps.music, exclusive = true },
     ["test"]  = { position = 6, spawn = apps.term .. " -T Xephyr -e Xephyr -ac -br -noreset -screen 600x400 :1"},

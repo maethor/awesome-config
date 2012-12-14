@@ -32,6 +32,7 @@ globalkeys = awful.util.table.join(
             if client.focus then client.focus:raise() end
         end,
         "Focus previous window"),
+    awful.key({ modkey,             }, "u", awful.client.urgent.jumpto, "Jump to next urgent client"),
 
 -- {{{1 Tag manipulation : Shifty
 
@@ -46,14 +47,34 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"     }, "Right", shifty.send_next, "Move client to next tag"),  -- Move client to next tag
     awful.key({ modkey, "Control"   }, "Left", shifty.shift_prev, "Move tag to the left"),  -- Swap tag position with the previous one
     awful.key({ modkey, "Control"   }, "Right", shifty.shift_next, "Move tag to the right"), -- Swap tag position with the next one
+    --awful.key({ modkey, "Control"   }, "F1", shifty.tagtoscr(1, awful.tag.selected())),
+    --awful.key({ modkey, "Control"   }, "F2", shifty.tagtoscr(2, awful.tag.selected())),
+    awful.key({ modkey, "Control"   }, "F1",
+                function()
+                    local t = awful.tag.selected()
+                    --awful.tag.history.restore()
+                    t = shifty.tagtoscr(1, t)
+                    --awful.tag.viewonly(t)
+                end,
+                "Send tag to next screen"),
+    awful.key({ modkey, "Control"   }, "n",
+                function()
+                    local t = awful.tag.selected()
+                    local s = awful.util.cycle(screen.count(), t.screen + 1)
+                    awful.tag.history.restore()
+                    t = shifty.tagtoscr(s, t)
+                    awful.tag.viewonly(t)
+                end,
+                "Send tag to next screen"),
+    awful.key({ modkey, "Control"   }, "j", function () awful.screen.focus_relative( 1) end, "Jump to next screen"),
+    awful.key({ modkey, "Control"   }, "k", function () awful.screen.focus_relative(-1) end, "Jump to previous screen"),
+
 
 -- {{{1 Layout manipulation : Awful
 
     keydoc.group("Layout manipulation"),
     awful.key({ modkey, "Shift"     }, "j", function () awful.client.swap.byidx(  1)    end, "Swap with next window"),
     awful.key({ modkey, "Shift"     }, "k", function () awful.client.swap.byidx( -1)    end, "Swap with previous window"),
-    awful.key({ modkey, "Control"   }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control"   }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,             }, "l", function () awful.tag.incmwfact( 0.05)      end, "Increase master-width factor"),
     awful.key({ modkey,             }, "h", function () awful.tag.incmwfact(-0.05)      end, "Decrease master-width factor"),
     awful.key({ modkey, "Shift"     }, "h", function () awful.tag.incnmaster( 1)        end, "Increase number of masters"),
@@ -62,8 +83,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control"   }, "l", function () awful.tag.incncol(-1)           end, "Decrease number of columns"),
     awful.key({ modkey,             }, "space", function () awful.layout.inc(layouts,  1) end, "Next layout"),
     awful.key({ modkey, "Shift"     }, "space", function () awful.layout.inc(layouts, -1) end, "Previous layout"),
-    awful.key({ modkey, "Control"   }, "n", awful.client.restore),
-    awful.key({ modkey,             }, "u", awful.client.urgent.jumpto),
+    --awful.key({ modkey, "Control"   }, "n", awful.client.restore),
 
 -- {{{1 Standard program
 
