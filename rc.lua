@@ -40,6 +40,7 @@ end
 -- }}}
 
 loadrc("errors")		-- errors and debug stuff
+loadrc("xrun")
 loadrc("env")           -- global config & variables
 loadrc("debug")         -- debugging primitive dbg()
 loadrc("start")         -- programs to run on start

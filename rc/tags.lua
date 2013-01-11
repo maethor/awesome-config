@@ -22,11 +22,11 @@ shifty.config.tags = {
     ["net"]   = { position = 9, spawn = apps.wifi, exclusive = true, nopopup = true },
     ["irc"]   = { position = 10, spawn = apps.irc, nopopup = true },
     ["mail"]  = { position = 11, spawn = apps.mail, exclusive = true, nopopup = true },
-    ["media"] = { position = 12, nopopup = true,  },
-    ["view"]  = { position = 13, nopopup = true,  },
-    ["im"]    = { position = 14, spawn = apps.im, exclusive = true, layout = layouts[6] },
-    ["sys"]   = { position = 15, spawn = apps.sys, nopopup = true, layout = layouts[3] },
-    ["foo"]   = { position = 16, nopopop = true, init = true, },
+    ["im"]    = { position = 12, spawn = apps.im, exclusive = true, layout = layouts[6] },
+    ["sys"]   = { position = 13, spawn = apps.sys, nopopup = true, layout = layouts[3] },
+    ["foo"]   = { position = 14, nopopop = true, init = true, },
+    ["media"] = { position = 15, nopopup = true,  },
+    ["view"]  = { position = 16, nopopup = true,  },
 }
 
 -- {{{1 Clients rules
