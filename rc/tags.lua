@@ -13,20 +13,20 @@ end
 shifty.config.tags = {
     ["main"]  = { position = 1, spawn = apps.term_tabbed, init = true },
     ["ssh"]   = { position = 2, spawn = apps.term .. " -name ssh -T ssh -e zsh -c 'ssh subiron.org'" },
-    ["www"]   = { position = 3, spawn = apps.browser, nopopup = true, max_clients = 1 },
+    ["www"]   = { position = 3, spawn = apps.browser, nopopup = true },
     ["xanadu"]= { position = 4, spawn = apps.term .. " -name xanadu -T xanadu -e ssh aquilenet.fr" },
     ["music"] = { position = 5, spawn = apps.music, exclusive = true },
     ["test"]  = { position = 6, spawn = apps.term .. " -T Xephyr -e Xephyr -ac -br -noreset -screen 600x400 :1"},
     ["dl"]    = { position = 7, spawn = apps.torrents},
-    ["dev"]   = { position = 8, spawn = "qtcreator", exclusive = true, max_clients = 1 },
-    ["net"]   = { position = 9, spawn = apps.wifi, exclusive = true, nopopup = true },
-    ["irc"]   = { position = 10, spawn = apps.irc, nopopup = true },
-    ["mail"]  = { position = 11, spawn = apps.mail, exclusive = true, nopopup = true },
+    ["mail"]  = { position = 8, spawn = apps.mail, exclusive = true },
+    ["net"]   = { position = 9, spawn = apps.wifi, exclusive = true },
+    ["irc"]   = { position = 10, spawn = apps.irc },
+    ["dev"]   = { position = 11, spawn = "qtcreator", exclusive = true, max_clients = 1 },
     ["im"]    = { position = 12, spawn = apps.im, exclusive = true, layout = layouts[6] },
-    ["sys"]   = { position = 13, spawn = apps.sys, nopopup = true, layout = layouts[3] },
+    ["sys"]   = { position = 13, spawn = apps.sys, layout = layouts[3] },
     ["foo"]   = { position = 14, nopopop = true, init = true, },
-    ["media"] = { position = 15, nopopup = true,  },
-    ["view"]  = { position = 16, nopopup = true,  },
+    ["media"] = { position = 15 },
+    ["view"]  = { position = 16 },
 }
 
 -- {{{1 Clients rules
@@ -35,7 +35,7 @@ shifty.config.tags = {
 shifty.config.apps = {
     { match = {"ssh"                                       }, tag = "ssh" },
     { match = {"Iceweasel", "Chromium", "dwb", "midori"    }, tag = "www" } ,
-    { match = {"^Shared links on"                          }, float = true, intrusive = true },
+    { match = {"^Shared links on", "Liens en vrac"         }, float = true, intrusive = true },
     { match = {"KTorrent", "Transmission"                  }, tag = "dl" },
     { match = {"vlc", "MPlayer", "ffplay"                  }, tag = "media" },
     { match = {"mpc"                                       }, tag = "music" },
