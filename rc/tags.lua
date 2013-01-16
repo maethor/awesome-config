@@ -47,7 +47,7 @@ shifty.config.apps = {
     { match = {"Psi", "psi"                                }, tag = "im" },
     { match = {"htop", "powertop"                          }, tag = "sys" },
     { match = {"Xephyr"                                    }, tag = "test" },
-    { match = {"gpicview","Epdfview", "okular", "gwenview", "evince" }, tag = "view", float = true },
+    { match = {"gpicview","Epdfview", "okular", "gwenview", "evince" }, tag = "view" },
     { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
     { match = { "" }, 
         buttons = awful.util.table.join(
