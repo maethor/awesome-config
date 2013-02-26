@@ -6,7 +6,7 @@ local na = awful.util.color_strip_alpha
 
 -- Main
 theme = {}
-theme.wallpaper = "/usr/share/awesome/themes/default/background.png"
+theme.wallpaper = "/usr/local/share/awesome/themes/default/background.png"
 theme.font      = "Profont 8"
 theme.path = awful.util.getdir("config").."/themes/maethor"
 theme.icons = theme.path .. "/icons"
@@ -51,8 +51,8 @@ theme.menu_width  = 100
 -- Icons
 theme.taglist_squares_sel    = theme.path.."/taglist/squarefz.png"
 theme.taglist_squares_unsel  = theme.path.."/taglist/squarez.png"
-theme.awesome_icon           = "/usr/share/awesome/themes/zenburn/awesome-icon.png"
-theme.menu_submenu_icon      = "/usr/share/awesome/themes/default/submenu.png"
+theme.awesome_icon           = "/usr/local/share/awesome/themes/zenburn/awesome-icon.png"
+theme.menu_submenu_icon      = "/usr/local/share/awesome/themes/default/submenu.png"
 
 -- Layout
 for _, l in pairs(layouts) do

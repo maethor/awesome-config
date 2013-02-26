@@ -39,6 +39,7 @@ function loadrc(name, mod)
 end
 -- }}}
 
+
 loadrc("errors")		-- errors and debug stuff
 loadrc("xrun")
 loadrc("env")           -- global config & variables
@@ -51,4 +52,3 @@ loadrc("xrandr")        -- xrandr handling
 loadrc("bindings")      -- key bindings
 loadrc("rules")         -- window rules
 loadrc("signals")       -- window manager behaviour
-

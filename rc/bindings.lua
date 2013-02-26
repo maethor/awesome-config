@@ -47,23 +47,15 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"     }, "Right", shifty.send_next, "Move client to next tag"),  -- Move client to next tag
     awful.key({ modkey, "Control"   }, "Left", shifty.shift_prev, "Move tag to the left"),  -- Swap tag position with the previous one
     awful.key({ modkey, "Control"   }, "Right", shifty.shift_next, "Move tag to the right"), -- Swap tag position with the next one
-    --awful.key({ modkey, "Control"   }, "F1", shifty.tagtoscr(1, awful.tag.selected())),
-    --awful.key({ modkey, "Control"   }, "F2", shifty.tagtoscr(2, awful.tag.selected())),
-    awful.key({ modkey, "Control"   }, "F1",
-                function()
-                    local t = awful.tag.selected()
-                    --awful.tag.history.restore()
-                    t = shifty.tagtoscr(1, t)
-                    --awful.tag.viewonly(t)
-                end,
-                "Send tag to next screen"),
+    awful.key({ modkey, "Control"   }, "F1", shifty.tagtoscr(1, awful.tag.selected())), -- DO NOT work 
+    awful.key({ modkey, "Control"   }, "F2", shifty.tagtoscr(2, awful.tag.selected())), -- DO NOT work
     awful.key({ modkey, "Control"   }, "n",
                 function()
                     local t = awful.tag.selected()
                     local s = awful.util.cycle(screen.count(), t.screen + 1)
-                    awful.tag.history.restore()
-                    t = shifty.tagtoscr(s, t)
-                    awful.tag.viewonly(t)
+                    local t2 = shifty.set(t, { screen = s })
+                    awful.screen.focus_relative(1)
+                    awful.tag.viewonly(t2)
                 end,
                 "Send tag to next screen"),
     awful.key({ modkey, "Control"   }, "j", function () awful.screen.focus_relative( 1) end, "Jump to next screen"),
@@ -88,8 +80,8 @@ globalkeys = awful.util.table.join(
 -- {{{1 Standard program
 
     keydoc.group("Misc"),
-    awful.key({ modkey,             }, "Return", function () awful.util.spawn(apps.term) end, "Spawn a terminal"),
-    awful.key({ modkey, "Shift"     }, "Return", function () awful.util.spawn(apps.term_tabbed) end, "Spawn a tabbed terminal"),
+    awful.key({ modkey,             }, "Return", function () awful.util.spawn(apps.term_tabbed) end, "Spawn a tabbed terminal"),
+    awful.key({ modkey, "Shift"     }, "Return", function () awful.util.spawn(apps.term_screen) end, "Spawn screen in a terminal"),
     awful.key({ modkey, "Control"   }, "Return", function () awful.util.spawn(apps.filemanager) end, "Spawn a filemanager"),
     awful.key({ modkey, "Control"   }, "r", awesome.restart, "Restart awesome"),
     awful.key({ modkey, "Shift"     }, "q", awesome.quit, "Quit awesome"),
@@ -99,6 +91,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function () volume.increase() end),
     awful.key({ }, "XF86AudioLowerVolume", function () volume.decrease() end),
     awful.key({ }, "XF86AudioMute", function () volume.toggle() end),
+    awful.key({ }, "XF86AudioStop", function () volume.toggle() end),
 
 -- {{{1 Useful keybindings
 
@@ -113,6 +106,10 @@ globalkeys = awful.util.table.join(
     --awful.key({ modkey, "Control"   }, "p", vol_high_low(), "MPC toogle volume"),
     awful.key({ modkey,             }, "<", function () mpc.prev_track() end, "MPC previous track"),
     awful.key({ modkey, "Shift"     }, "<", function () mpc.next_track() end, "MPC next track"),
+
+    awful.key({ }, "XF86AudioPlay", function () mpc.play_pause() end),
+    awful.key({ }, "XF86AudioPrev", function () mpc.prev_track() end),
+    awful.key({ }, "XF86AudioNext", function () mpc.next_track() end),
 
     -- Lock screen
     awful.key({ modkey2, "Control"  }, "l", func.misc.lock, "Lock screen"),

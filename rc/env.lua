@@ -14,6 +14,7 @@ terminal = "urxvtc"
 terminal_full = "/usr/bin/urxvtc"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal_full .. " -e " .. editor
+hostname = awful.util.pread('uname -n'):gsub('\n', '')
 
 -- {{{1 Modkeys 
 -- Usually, Mod4 is the 'windows' key, between ctrl and alt
@@ -62,6 +63,12 @@ apps = {
     torrents = "transmission-qt",
     wifi = "/usr/sbin/wpa_gui"
 }
+
+if hostname == "rhodes" then
+    print ("toto")
+    apps.filemanager = "dolphin"
+    apps.browser = "iceweasel"
+end
 
 -- {{{1 Useful functions
 settings = {}

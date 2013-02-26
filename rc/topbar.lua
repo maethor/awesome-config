@@ -188,8 +188,10 @@ for s = 1, screen.count() do
         right_layout:add(volicon)
         right_layout:add(myvolume)
         right_layout:add(separator)
-        right_layout:add(batterywidget.widget)
-        right_layout:add(separator)
+        if hostname == "logan" or hostname == "stark" then
+            right_layout:add(batterywidget.widget)
+            right_layout:add(separator)
+        end
     else
         right_layout:add(left)
     end
