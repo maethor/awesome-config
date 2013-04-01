@@ -21,7 +21,8 @@ shifty.config.tags = {
     ["mail"]  = { position = 8, spawn = apps.mail, exclusive = true },
     ["net"]   = { position = 9, spawn = apps.wifi, exclusive = true },
     ["irc"]   = { position = 10, spawn = apps.irc },
-    ["dev"]   = { position = 11, spawn = "qtcreator", exclusive = true, max_clients = 1 },
+    --["dev"]   = { position = 11, spawn = "qtcreator", exclusive = true, max_clients = 1 },
+    ["dev"]   = { position = 11, spawn = apps.term_tabbed .. "&&" .. apps.term_tabbed, nmaster = 3, layout = awful.layout.suit.tile.top },
     ["im"]    = { position = 12, spawn = apps.im, exclusive = true, layout = layouts[6] },
     ["sys"]   = { position = 13, spawn = apps.sys, layout = layouts[3] },
     ["foo"]   = { position = 14, nopopop = true, init = true, },
@@ -33,7 +34,7 @@ shifty.config.tags = {
 ---------------------
 
 shifty.config.apps = {
-    { match = {"ssh"                                       }, tag = "ssh" },
+    { match = {"^ssh"                                       }, tag = "ssh" },
     { match = {"Iceweasel", "Chromium", "dwb", "midori"    }, tag = "www" } ,
     { match = {"^Shared links on", "Liens en vrac"         }, float = true, intrusive = true },
     { match = {"KTorrent", "Transmission"                  }, tag = "dl" },

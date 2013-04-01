@@ -281,4 +281,4 @@ clientbuttons = awful.util.table.join(
 root.keys(globalkeys)
 shifty.config.globalkeys = globalkeys
 shifty.config.clientkeys = clientkeys
-
+ntop(addrntop(addr))
