@@ -113,6 +113,7 @@ globalkeys = awful.util.table.join(
 
     -- Lock screen
     awful.key({ modkey2, "Control"  }, "l", func.misc.lock, "Lock screen"),
+    awful.key({ }, "XF86ScreenSaver", func.misc.lock),
 
     -- Display
     awful.key({                     }, "XF86Display", xrandr, "Change Display"),
@@ -281,4 +282,4 @@ clientbuttons = awful.util.table.join(
 root.keys(globalkeys)
 shifty.config.globalkeys = globalkeys
 shifty.config.clientkeys = clientkeys
-ntop(addrntop(addr))
+

@@ -94,7 +94,7 @@ local function markup(keys)
 	 local help, group = doc[key].help, doc[key].group
 	 local skey = key2str(key)
 	 result[group] = (result[group] or "") ..
-        '<span font="DejaVu Sans Mono 10" color="' .. beautiful.border_focus .. '"> ' ..
+        '<span font="DejaVu Sans Mono 10" color="' .. beautiful.fg_important .. '"> ' ..
 	    string.format("%" .. (longest - unilen(skey)) .. "s  ", "") .. skey ..
         '</span>  <span color="' .. beautiful.fg_normal .. '">' ..
         help .. '</span>\n'

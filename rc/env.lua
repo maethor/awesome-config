@@ -35,9 +35,7 @@ layouts =
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
-    awful.layout.suit.floating,
-    awful.layout.suit.align,
-    awful.layout.suit.align.top,
+    awful.layout.suit.floating
 }
 
 -- {{{1 Beautiful init
