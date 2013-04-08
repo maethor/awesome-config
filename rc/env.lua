@@ -64,8 +64,7 @@ apps = {
     wifi = "/usr/sbin/wpa_gui"
 }
 
-if hostname == "rhodes" then
-    print ("toto")
+if hostname == "rhodes" or hostname == "stark" then
     apps.filemanager = "dolphin"
     apps.browser = "iceweasel"
 end
