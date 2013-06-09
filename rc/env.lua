@@ -61,7 +61,8 @@ apps = {
     sys = terminal .. " -name htop -T htop -e htop",
     browser = "chromium",
     torrents = "transmission-qt",
-    wifi = "/usr/sbin/wpa_gui"
+    wifi = "/usr/sbin/wpa_gui",
+    ftp = "filezilla"
 }
 
 if hostname == "rhodes" or hostname == "stark" then

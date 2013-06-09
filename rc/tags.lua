@@ -28,6 +28,7 @@ shifty.config.tags = {
     ["foo"]   = { position = 14, nopopop = true, init = true, },
     ["media"] = { position = 15 },
     ["view"]  = { position = 16 },
+    ["ftp"]   = { position = 17, spawn = apps.ftp },
 }
 
 -- {{{1 Clients rules
