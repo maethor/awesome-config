@@ -70,6 +70,6 @@ shifty.config.defaults = {
 -- {{{1 Init shifty
 -------------------
 
-shifty.config.taglist = mytaglist
+shifty.taglist = mytaglist
 shifty.init()
 
