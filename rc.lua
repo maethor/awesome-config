@@ -4,6 +4,7 @@ require("awful.autofocus")
 beautiful = require("beautiful")
 naughty = require("naughty")
 gears = require("gears")
+shifty = require("shifty")
 
 -- {{{ Simple function to load additional LUA files from rc/.
 function loadrc(name, mod)

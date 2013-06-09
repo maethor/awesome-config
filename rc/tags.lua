@@ -1,5 +1,3 @@
-local shifty = loadrc("shifty", "shifty")
-
 local tagicon = function(icon)
    if screen.count() > 1 then
       return beautiful.icons .. "/taglist/" .. icon .. ".png"
