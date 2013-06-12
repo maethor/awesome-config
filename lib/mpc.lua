@@ -11,7 +11,7 @@ local string = string
 
 local naughty = naughty
 
-local default_cover = "~/.config/awesome/default_cover.jpg"
+local default_cover = "~/.config/awesome/default_cover.png"
 local COVER_SIZE = 75
 local music_folder = "~/Musique"
 
@@ -41,7 +41,7 @@ function get_cover()
     local folder = music_folder.."/"..filename:sub(0, filename:find("/", filename:reverse():find("/")))
     local cover = io.popen("ls " .. string.gsub(string.gsub(folder, "'", "\\'"), " ", "\\ ") .. 
                             " | grep -P '.jpg|.png|.gif|.jpeg' | head -n 1"):read("*line")
-    if cover == "" then
+    if cover == nil or cover == "" then
         if string.sub(default_cover, 1, 1) == "~" then
            local user_folder = io.popen("echo ~"):read("*line")
            default_cover = user_folder .. string.sub(default_cover, 2)
