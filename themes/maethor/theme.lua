@@ -52,7 +52,7 @@ theme.bg_systray  = theme.bg_normal
 
 -- Borders
 theme.border_width  = "1"
-theme.border_normal = theme.palette.gravel
+theme.border_normal = theme.palette.deepgravel
 theme.border_focus  = theme.palette.tardis
 theme.border_marked = theme.palette.taffy
 

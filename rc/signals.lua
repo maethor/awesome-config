@@ -9,6 +9,7 @@ client.connect_signal("manage", function (c, startup)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
             and awful.client.focus.filter(c) then
             client.focus = c
+            c.border_color = beautiful.border_focus
         end
     end)
 
@@ -25,14 +26,13 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
-client.add_signal("focus", function(c)
-		     c.border_color = beautiful.border_focus
-		     c.opacity = 1
-			   end)
-client.add_signal("unfocus", function(c)
-		     c.border_color = beautiful.border_normal
-		     c.opacity = 0.85
-			     end)
+client.connect_signal("focus", function(c)
+    c.border_color = beautiful.border_focus
+end)
+
+client.connect_signal("unfocus", function(c)
+    c.border_color = beautiful.border_normal
+end)
 -- On exit, stop mpc
 --awesome.connect_signal("exit", function () awful.util.spawn("/usr/bin/mpc pause") end)
 
