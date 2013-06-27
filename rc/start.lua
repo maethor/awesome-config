@@ -16,7 +16,13 @@ awful.util.spawn("xmodmap -e 'keysym Menu = Super_L'")
 if hostname == "logan" or hostname == "stark" then
     -- Synaptics
     awful.util.spawn_with_shell(awesome_bins .. "/synaptics")
-elseif hostname == "rhodes" then
+end
+
+if hostname == "stark" then
+    xrun("owncloud", "owncloud --monoicons")
+end
+
+if hostname == "rhodes" then
     xrun("owncloud", "owncloud")
     xrun("transmission", "transmission-qt -m")
 end
