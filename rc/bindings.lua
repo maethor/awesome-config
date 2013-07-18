@@ -45,8 +45,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,             }, "w", shifty.del, "Delete tag"),
     awful.key({ modkey, "Shift"     }, "Left", shifty.send_prev, "Move client to previous tag"),   -- Move client to previous tag
     awful.key({ modkey, "Shift"     }, "Right", shifty.send_next, "Move client to next tag"),  -- Move client to next tag
-    awful.key({ modkey, "Control"   }, "Left", shifty.shift_prev, "Move tag to the left"),  -- Swap tag position with the previous one
-    awful.key({ modkey, "Control"   }, "Right", shifty.shift_next, "Move tag to the right"), -- Swap tag position with the next one
+    awful.key({ modkey, "Control"   }, "Left", shift_prev, "Move tag to the left"),  -- Swap tag position with the previous one
+    awful.key({ modkey, "Control"   }, "Right", shift_next, "Move tag to the right"), -- Swap tag position with the next one
     awful.key({ modkey, "Control"   }, "F1", shifty.tagtoscr(1, awful.tag.selected())), -- DO NOT work 
     awful.key({ modkey, "Control"   }, "F2", shifty.tagtoscr(2, awful.tag.selected())), -- DO NOT work
     awful.key({ modkey, "Control"   }, "n",
