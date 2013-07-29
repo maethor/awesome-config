@@ -117,7 +117,7 @@ func = {
     -- Misc
     misc = {
         -- Take a screenshot, requires scrot 
-        screenshot = function () awful.util.spawn("scrot -e 'mv $f ~/pics/screenshots/ 2>/dev/null'") end,
+        screenshot = function () awful.util.spawn("scrot -e 'mv $f ~/Images/ 2>/dev/null'") end,
 
         -- Lock screen, requires slock
         lock = function () awful.util.spawn("xscreensaver-command -lock") end,
