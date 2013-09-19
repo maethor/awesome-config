@@ -19,7 +19,7 @@ if hostname == "logan" or hostname == "stark" then
 end
 
 if hostname == "stark" then
-    xrun("owncloud", "owncloud --monoicons")
+    xrun("owncloud", "owncloud")
 end
 
 if hostname == "rhodes" then

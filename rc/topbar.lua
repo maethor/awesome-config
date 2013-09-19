@@ -92,6 +92,23 @@ myvolume = wibox.widget.textbox()
 local volume = loadrc("volume", "maethor/volume")
 vicious.register(myvolume, function() return volume.getvolume() end, "$1", 5)
 --vicious.register(myvolume, vicious.widgets.volume, " $2 $1%", 5, "Master")
+
+-- Email Widget
+--function mailcount()
+--    local f = io.open(os.getenv("HOME") .. "/tmp/mailcount")
+--    local l = nil
+--    if f ~= nil then
+--          l = f:read()
+--    else
+--          l = "?"
+--    end
+--    f:close()
+--    return l
+--end
+--
+--mymail = wibox.widget.textbox( mailcount() )
+--mymail.timer = timer{timeout=60}
+--mymail.timer:connect_signal("timeout", function () mymail:set_text ( mailcount() ) end)
  
 -- {{{1 Icons
 -------------
@@ -192,6 +209,8 @@ for s = 1, screen.count() do
             right_layout:add(batterywidget.widget)
             right_layout:add(separator)
         end
+        --right_layout:add(mymail)
+        right_layout:add(separator)
     else
         right_layout:add(left)
     end

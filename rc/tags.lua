@@ -14,7 +14,7 @@ shifty.config.tags = {
     ["www"]   = { position = 3, spawn = apps.browser, nopopup = true },
     ["dev"]   = { position = 4, spawn = apps.term_tabbed .. "&&" .. apps.term_tabbed, nmaster = 3, layout = awful.layout.suit.tile.top },
     ["music"] = { position = 5, spawn = apps.music, exclusive = true },
-    ["test"]  = { position = 6, spawn = apps.term .. " -T Xephyr -e Xephyr -ac -br -noreset -screen 600x400 :1"},
+    ["cal"]   = { position = 6, spawn = apps.calendar},
     ["dl"]    = { position = 7, spawn = apps.torrents},
     ["mail"]  = { position = 8, spawn = apps.mail, exclusive = true },
     ["net"]   = { position = 9, spawn = apps.wifi, exclusive = true },
@@ -27,6 +27,7 @@ shifty.config.tags = {
     ["media"] = { position = 15 },
     ["view"]  = { position = 16 },
     ["ftp"]   = { position = 17, spawn = apps.ftp },
+    ["test"]  = { position = 18, spawn = apps.term .. " -T Xephyr -e Xephyr -ac -br -noreset -screen 600x400 :1"},
 }
 
 -- {{{1 Clients rules
@@ -43,6 +44,7 @@ shifty.config.apps = {
     { match = {"wpa_gui"                                   }, tag = "net" },
     { match = {"WeeChat 0.2.6","weechat-curses","weechat"  }, tag = "irc" },
     { match = {"man","qtcreator"                           }, tag = "dev", float = false },
+    { match = {"iceowl", "korganizer", "wyrd"              }, tag = "calendar" },
     { match = {"mutt", "Mutt"                              }, tag = "mail" },
     { match = {"Psi", "psi"                                }, tag = "im" },
     { match = {"htop", "powertop"                          }, tag = "sys" },

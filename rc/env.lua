@@ -62,7 +62,8 @@ apps = {
     browser = "chromium",
     torrents = "transmission-qt",
     wifi = "/usr/sbin/wpa_gui",
-    ftp = "filezilla"
+    ftp = "filezilla",
+    calendar = "iceowl"
 }
 
 if hostname == "rhodes" or hostname == "stark" then
@@ -121,6 +122,13 @@ func = {
 
         -- Lock screen, requires slock
         lock = function () awful.util.spawn("xscreensaver-command -lock") end,
+
+    },
+    -- Linphone
+    linphone = {
+        answer = function() awful.util.spawn("linphonecsh generic 'answer'") end,
+        terminate = function() awful.util.spawn("linphonecsh generic 'terminate'") end,
+        record = function() awful.util.spawn("linphonecsh generic 'record /tmp/call.wav'") end,
     },
 
 }

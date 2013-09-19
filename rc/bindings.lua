@@ -93,6 +93,12 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioMute", function () volume.toggle() end),
     awful.key({ }, "XF86AudioStop", function () volume.toggle() end),
 
+-- {{{1 Linphone
+
+    awful.key({ modkey, }, "F11", func.linphone.answer, "Anwser linphone"),
+    awful.key({ modkey, }, "F10", func.linphone.terminate, "Terminate call"),
+    awful.key({ modkey, }, "F12", func.linphone.record, "Record call"),
+
 -- {{{1 Useful keybindings
 
     -- Take a screenshot
