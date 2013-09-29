@@ -71,6 +71,10 @@ if hostname == "rhodes" or hostname == "stark" then
     apps.browser = "iceweasel"
 end
 
+if hostname == "stark" then
+    apps.browser = "firefox"
+end
+
 -- {{{1 Useful functions
 settings = {}
 func = {

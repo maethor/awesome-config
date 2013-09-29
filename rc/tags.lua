@@ -34,8 +34,8 @@ shifty.config.tags = {
 ---------------------
 
 shifty.config.apps = {
-    { match = {"^ssh"                                       }, tag = "ssh" },
-    { match = {"Iceweasel", "Chromium", "dwb", "midori"    }, tag = "www" } ,
+    { match = {"^ssh"                                      }, tag = "ssh" },
+    { match = {"Iceweasel", "Firefox", "Chromium"          }, tag = "www" } ,
     { match = {"^Shared links on", "Liens en vrac"         }, float = true, intrusive = true },
     { match = {"KTorrent", "Transmission"                  }, tag = "dl" },
     { match = {"vlc", "MPlayer", "ffplay"                  }, tag = "media" },
