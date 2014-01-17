@@ -16,7 +16,7 @@ shifty.config.tags = {
     ["music"] = { position = 5, spawn = apps.music, exclusive = true },
     ["cal"]   = { position = 6, spawn = apps.calendar},
     ["dl"]    = { position = 7, spawn = apps.torrents},
-    ["mail"]  = { position = 8, spawn = apps.mail, exclusive = true },
+    ["mail"]  = { position = 8, spawn = apps.mail },
     ["net"]   = { position = 9, spawn = apps.wifi, exclusive = true },
     ["irc"]   = { position = 10, spawn = apps.irc },
     ["xanadu"]= { position = 11, spawn = apps.term .. " -name xanadu -T xanadu -e ssh aquilenet.fr" },
@@ -28,6 +28,7 @@ shifty.config.tags = {
     ["view"]  = { position = 16 },
     ["ftp"]   = { position = 17, spawn = apps.ftp },
     ["test"]  = { position = 18, spawn = apps.term .. " -T Xephyr -e Xephyr -ac -br -noreset -screen 600x400 :1"},
+    ["virt"]  = { position = 19, spawn = "virt-manager", layout = awful.layout.suit.floating },
 }
 
 -- {{{1 Clients rules
@@ -51,6 +52,7 @@ shifty.config.apps = {
     { match = {"Xephyr"                                    }, tag = "test" },
     { match = {"gpicview","Epdfview", "okular", "gwenview", "evince" }, tag = "view" },
     { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
+    { match = {"Virt-manager"                              }, tag = "virt" },
     { match = { "" }, 
         buttons = awful.util.table.join(
             awful.button({ }, 1, function (c) client.focus = c; c:raise() end),

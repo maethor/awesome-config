@@ -52,10 +52,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control"   }, "n",
                 function()
                     local t = awful.tag.selected()
-                    local s = awful.util.cycle(screen.count(), t.screen + 1)
-                    local t2 = shifty.set(t, { screen = s })
+                    local s = awful.util.cycle(screen.count(), awful.tag.getscreen(t) + 1)
+                    --local t2 = shifty.set(t, { screen = s })
+                    --local t2 = awful.tag.setscreen(t, s)
                     awful.screen.focus_relative(1)
-                    awful.tag.viewonly(t2)
+                    --awful.tag.viewonly(t2)
                 end,
                 "Send tag to next screen"),
     awful.key({ modkey, "Control"   }, "j", function () awful.screen.focus_relative( 1) end, "Jump to next screen"),

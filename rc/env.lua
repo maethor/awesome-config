@@ -68,12 +68,10 @@ apps = {
 
 if hostname == "rhodes" or hostname == "stark" then
     apps.filemanager = "dolphin"
-    apps.browser = "iceweasel"
-end
-
-if hostname == "stark" then
     apps.browser = "firefox"
 end
+
+screen_count = screen.count()
 
 -- {{{1 Useful functions
 settings = {}
