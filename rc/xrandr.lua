@@ -53,7 +53,7 @@ local function menu()
     for _, choice in pairs(choices) do
         local cmd = "xrandr --auto"
         -- Enabled outputs
-        for i, o in pairs(reverse(choice)) do
+        for i, o in pairs(choice) do
             cmd = cmd .. " --output " .. o .. " --auto"
             if i > 1 then
                 cmd = cmd .. " --right-of " .. choice[i-1]

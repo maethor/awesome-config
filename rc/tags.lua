@@ -44,7 +44,7 @@ shifty.config.apps = {
     { match = {"xanadu"                                    }, tag = "xanadu" },
     { match = {"wpa_gui"                                   }, tag = "net" },
     { match = {"WeeChat 0.2.6","weechat-curses","weechat"  }, tag = "irc" },
-    { match = {"man","qtcreator"                           }, tag = "dev", float = false },
+    { match = {"qtcreator"                                 }, tag = "dev", float = false },
     { match = {"iceowl", "korganizer", "wyrd"              }, tag = "calendar" },
     { match = {"mutt", "Mutt"                              }, tag = "mail" },
     { match = {"Psi", "psi"                                }, tag = "im" },
@@ -52,7 +52,7 @@ shifty.config.apps = {
     { match = {"Xephyr"                                    }, tag = "test" },
     { match = {"gpicview","Epdfview", "okular", "gwenview", "evince" }, tag = "view" },
     { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
-    { match = {"Virt-manager"                              }, tag = "virt" },
+    { match = {"Virt-manager", "virt-manager"              }, tag = "virt" },
     { match = { "" }, 
         buttons = awful.util.table.join(
             awful.button({ }, 1, function (c) client.focus = c; c:raise() end),

@@ -49,7 +49,7 @@ loadrc("start")         -- programs to run on start
 loadrc("wallpaper")     -- wallpaper settings
 loadrc("topbar")        -- topbar configuration
 loadrc("tags")          -- tags handling
-loadrc("bindings")      -- key bindings
 loadrc("xrandr")        -- xrandr handling
+loadrc("bindings")      -- key bindings
 loadrc("rules")         -- window rules
 loadrc("signals")       -- window manager behaviour
